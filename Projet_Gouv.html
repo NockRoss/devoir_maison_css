@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Devoir à la maison</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../../../illustration/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="images/specifique_msp.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+        /* Styles de base pour le header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        #recherche_conteneur {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        #rechercheInput {
+            margin-bottom: 10px;
+        }
+
+        /* Médias CSS pour la mise en page responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #recherche_conteneur {
+                margin-top: 10px;
+                align-items: center;
+            }
+
+            /* Utilisez la classe d-md-flex pour afficher les éléments de la nav côte à côte jusqu'à un certain point, puis un en dessous de l'autre */
+            .navbar .navbar-nav {
+                d-md-flex;
+                flex-direction: column;
+            }
+        }
+
+        /* Ajoutez du style pour la barre de navigation Bootstrap ici */
+        .navbar {
+            margin-top: 20px; /* Ajustez la marge selon vos besoins */
+        }
+		#contenu_principal h1 {
+    background: #0E5F96;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px 0px 3px 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border-radius: 8px 8px 0px 0px;
+}
+:before, :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.annonce {
+    font-weight: bold;
+    font-size: small;
+    color: #0E5F96;
+    padding-top: 3px;
+    padding-bottom: 6px;
+}
+.rubriques {
+    margin-bottom: 1em;
+    color: #535353;
+    border-bottom: 1px solid #F0F5F8;
+    background: #F1F6F8;
+    -moz-border-radius-bottomleft: 1em;
+    -moz-border-radius-bottomright: 1em;
+    -webkit-border-bottom-left-radius: 1em;
+    -webkit-border-bottom-right-radius: 1em;
+    border-radius: 0px 0px 1em 1em;
+    -moz-box-shadow: 0px 2px 0px #dadada;
+    -webkit-box-shadow: 0px 2px 0px #DADADA;
+    box-shadow: 0px 2px 0px #DADADA;
+}
+meta {
+    display: none;
+}
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical>.btn-group:before, .btn-group-vertical>.btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    content: " ";
+    display: table;
+}
+title {
+    display: none;
+}
+div {
+    display: block;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#colonne_droite .rubrique2 h3 {
+    background: #0E5F96;
+}
+#colonne_droite .bottom_link {
+    text-align: right;
+    line-height: 1.7em;
+    clear: both;
+    margin-top: 0.5em;
+    padding-right: 10px;
+}
+img {
+    border: 0;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+#colonne_droite h3 {
+    padding-top: 0.6em;
+    padding-bottom: 0.4em;
+    font-size: 1em;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border-radius: 8px 8px 0px 0px;
+}
+#colonne_droite .rubrique1 h3 {
+    background: #9C2F03;
+}
+#contenu_principal.tableau_de_bord a {
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+#colonne_droite a {
+    text-decoration: none;
+    color: #535353;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+a {
+    background: 0 0;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#contenu_principal .rubriques ul li, #colonne_droite .rubriques ul li {
+    list-style-position: outside;
+    list-style-type: none;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+li {
+    text-align: -webkit-match-parent;
+}
+#contenu_principal .rubriques ul, #colonne_droite .rubriques ul {
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 15px;
+}
+ul {
+    list-style-type: disc;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.footer-color {
+        background-color: #008bd3;
+        color: #fff; /* Couleur du texte (blanc) */
+    }
+.footFooter {
+        background-color: #00327b;
+        color: #fff; /* Couleur du texte (blanc) */
+    }
+.navbar {
+    background-color: #00327b;
+}
+
+.navbar-nav ul li a {
+    color: #00327b;
+}
+
+    </style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<div>
+				<img src="https://lp-projet-web.ovh/css3/evaluations/20221006_devoir_maison/img/logo_msp_Part.png" width="365" height="73">
+			</div>
+
+			<div role="search" id="recherche_conteneur">
+				<form action="https://mon.service-public.fr/portail/faces/jsp/liste_res_tout.jsp" method="get">
+					<input type="text" name="fullText" id="rechercheInput"value="Rechercher" title="Rechercher">
+					<input type="submit" value="ok" title="Lancer la recherche"   id="ok_recherche">
+				</form>
+			</div>				
+		</header>
+
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div>
+                <ul class="navbar-nav">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon tableau de bord</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+								<a class="dropdown-item" href="#">Mes liaisons de comptes</a>
+								<a class="dropdown-item" href="#">Mon calendrier</a>
+								<a class="dropdown-item" href="#">Mon suivi</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role" button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes documents</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+								<a class="dropdown-item" href="#">Mon porte-documents</a>
+								<a class="dropdown-item" href="#">Mon bloc-notes</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon profil</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+								<a class="dropdown-item" href="#">Mes coordonnées</a>
+								<a class="dropdown-item" href="#">Mes contacts</a>
+								<a class="dropdown-item" href="#">Mes options</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalogue des services</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+								<a class="dropdown-item" href="#">Les démarches</a>
+								<a class="dropdown-item" href="#">Les formulaires CERFA</a>
+								<a class="dropdown-item" href="#">Les organismes partenaires</a>
+								<a class="dropdown-item" href="http://lannuaire.service-public.fr/" target="_blank">L'annuaire de l'administration</a>
+								<a class="dropdown-item" href="http://www.service-public.fr/" target="_blank">Le guide des droits et démarches</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </ul>
+		</nav>
+
+		
+     <div>
+        <ul style="list-style-type: none;">
+            <li><a href="https://mon.service-public.fr/portail" style="text-decoration: none;">Accueil</a> &gt; Mon tableau de bord</li>
+        </ul>
+     </div>
+
+     <div>
+        <div id="contenu_principal" class="row tableau_de_bord">
+            <div class="col-lg-8">
+                <h1 class="prepend-1">Mon tableau de bord</h1>
+                <div class="annonce">Découvrez ci-dessous ce que vous pouvez faire dans la rubrique « Mon tableau de bord ». </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="rubriques">
+                            <a href="jsp/mes_liaisons.jsp"><img src="images/402_429_Liaisons.JPG" width="60" height="60">Mes liaisons de comptes</a>
+                            <ul>
+                                <li>Accédez d'un clic à vos comptes administratifs sans ressaisir vos identifiants et mots de passe.</li>
+                                <li>Gérez vos liaisons de comptes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="rubriques">
+                            <a href="https://mon.service-public.fr/portail/faces/jsp/mon_calendrier.jsp"><img src="images/605_403_418_picto_agenda.gif" width="60" height="60">Mon calendrier </a>
+                            <ul>
+                                <li>Notez et visualisez toutes vos échéances administratives.</li>
+                                <li>Recevez des alertes par courriel pour vos rappels d'échéances.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="rubriques">
+                            <a href="https://mon.service-public.fr/portail/faces/jsp/mon_suivi.jsp"><img src="images/401_430_suivi.jpg" width="60" height="60">Mon suivi </a>
+                            <ul>
+                                <li>Suivez l'avancement de vos démarches en ligne.</li>
+                                <li>Consultez les messages envoyés.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="colonne_droite">
+                    <div class="rubrique2 rubriques">
+                        <h3 class="prepend-1">LES ASTUCES</h3>
+                        <ul>
+                            <li><a id="colD:_idJsp42:1:lienColdSaviezVous" name="colD:_idJsp42:1:lienColdSaviezVous" href="https://mon.service-public.fr/portail/faces/jsp/authent/page_detail_astuce_MSP.jsp?idAstuce=1001" target="_self" title="Lien vers Accédez depuis mon.service-public.fr à une nouvelle génération de démarches en ligne">Accédez depuis mon.service-public.fr à une nouvelle génération de démarches en ligne</a></li>
+                        </ul>
+                        <div class="bottom_link"><a href="https://mon.service-public.fr/portail/faces/jsp/authent/toutes_astuces_msp.jsp">Toutes les astuces</a></div>
+                    </div>
+                    <div class="rubrique1 rubriques">
+                        <h3 class="prepend-1">Les actualités</h3>
+                        <ul>
+                            <li><a href="#" title="Lien vers Votre avis nous intéresse…"><span class="date">22/10/2012</span> Que pensez-vous de MSP ?</a></li>
+                            <li><a href="#" title="Lien vers Une nouvelle démarche dans le Tarn"><span class="date">10/10/2012</span> Le Conseil général du Tarn vient de déployer une nouvelle téléprocédure.</a></li>
+                            <li><a href="#" title="Lien vers Déclarez en ligne le décès d'un proche "><span class="date">30/07/2012</span> Une nouvelle démarche en ligne sur MSP</a></li>
+                            <li><a href="#" title="Lien vers Pour les départements numérotés de 50 à 974 il ne vous reste que quelques jours pour télé-déclarer vos revenus"><span class="date">15/06/2012</span> Accédez à votre déclaration de revenus depuis MSP</a></li>
+                        </ul>
+                        <div class="bottom_link"><a href="https://mon.service-public.fr/portail/faces/jsp/authent/tout_actualites_msp.jsp">Toutes les actualités</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    
+     <footer class="footer-color">
+        <div class="footer mt-3">
+            <ul class="row">
+                <li class="col-lg-1">
+                    <span><a href="http://www.ojd-internet.com/chiffres-internet/7111-service-public.fr" target="_blank"><img src="images/logo-ojd.png" alt="logo du OJD"></a></span>
+                </li>
+                <li class="col-lg-2">
+                    <p>Assistance et contact</p>
+                    <ul>
+                        <li><a href="jsp/authent/plan_du_site.jsp" target="_self" ><span title="">Plan du site</span></a></li>
+                        <li><a href="jsp/authent/contact.jsp" target="_self"><span title="">Contact</span></a></li>
+                        <li><a href="jsp/authent/aide.jsp" target="_self"><span title="">Aide</span></a></li>
+                        <li><a href="jsp/authent/faqs.jsp" target="_self" ><span title="">Questions fréquentes</span></a></li>
+                    </ul>
+                </li>
+                <li class="col-lg-3">
+                    <p>Informations légales</p>
+                    <ul>
+                        <li><a href="jsp/authent/mentions_legales.jsp"><span title="">Mentions légales</span></a></li>
+                        <li><a href="jsp/authent/conditions_generales_utilisation.jsp" target="_self"><span title="">Conditions générales d'utilisation</span></a></li>
+                        <li><a href="http://www.service-public.fr/%C3%A0-propos-du-site/001371.html" target="_blank"><span title="Répertoire des informations publiques - Nouvelle fenêtre">Répertoire des informations publiques</span></a></li>
+                    </ul>
+                </li>
+                <li class="col-lg-3">
+                    <p>Qualité de service</p>
+                    <ul>
+                        <li><a href="jsp/authent/accessibilite.jsp"><span title="">Accessibilité</span></a></li>
+                        <li><a href="jsp/authent/securite.jsp" ><span title="">Sécurité</span></a></li>
+                        <li><a href="jsp/authent/engagement_qualite.jsp"><span title="">Engagement qualité</span></a></li>
+                        <li><a href="jsp/authent/statistiques.jsp" ><span title="">Statistiques</span></a></li>
+                    </ul>
+                </li>
+                <li class="col-lg-3">
+                    <p>Partenariat</p>
+                    <ul>
+                        <li><a href="jsp/authent/partenaires.jsp"><span title="">Nos organismes partenaires</span></a></li>
+                        <li><a href="jsp/authent/devenir_partenaire.jsp"><span title="">Devenir partenaire ?</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="row footFooter">
+                <a class="text-light text-center col-6" target="_blank" href="jsp/authent/a_propos_de_la_DGME.jsp">Tous droits réservés - Direction Générale de Modernisation de l'Etat - 2012 </a> | <a class="text-light text-center col-3" title="A propos du site" href="jsp/authent/a_propos_du_site.jsp">A propos de mon.service-public.fr</a>
+            </div>	
+        
+        </div>
+        
+     </footer>
+	</div>
+</body>
+</html>
